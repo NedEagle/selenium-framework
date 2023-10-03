@@ -1,7 +1,7 @@
 const { Builder, By } = require('selenium-webdriver');
 const { describe, it, after, before } = require('mocha');
 const assert = require('chai').assert;
-const LoginPage = require('./loginPage');
+const LoginPage = require('../../pages/saucedemoPages/loginPage');
 const { expect } = require('chai');
 
 let driver;
