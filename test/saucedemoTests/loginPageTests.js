@@ -1,4 +1,4 @@
-const { Builder, By } = require('selenium-webdriver');
+const { Builder, By, until, } = require('selenium-webdriver');
 const { describe, it, after, before } = require('mocha');
 const assert = require('chai').assert;
 const LoginPage = require('../../pages/saucedemoPages/loginPage');
@@ -19,7 +19,6 @@ after(() => {
 });
 
 describe('Sample Test on saucedemo.com homepage', () => {
-
     before(async () => {
         await driver.get('https://www.saucedemo.com/');
     });
@@ -131,7 +130,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     it('should attempt login with correct username and incorrect password and verify behavior', async () => {
         
         await driver.navigate().refresh();
-        await loginPage.enterCorrectUsername();
+        await loginPage.enterStandardUser(); 
         await loginPage.enterIncorrectPassword();
         await loginPage.clickLogin();
         
@@ -148,7 +147,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     it('should attempt login with correct username and no password and verify behavior', async () => {
         
         await driver.navigate().refresh();
-        await loginPage.enterCorrectUsername();
+        await loginPage.enterStandardUser();
         await loginPage.clickLogin();
         
         // verify that the user is still in the current page
@@ -161,17 +160,53 @@ describe('Sample Test on saucedemo.com homepage', () => {
     });
 
     // Test#10- attempt login with correct username and password and verify behavior
-    it('should attempt login with correct username and correct password and verify behavior', async () => {
+    it('should attempt login with the first correct username and correct password and verify behavior', async () => {
 
         await driver.navigate().refresh();
-        await loginPage.enterCorrectUsername();
-        await loginPage.enterCorrectPassword();
-        await loginPage.clickLogin();
+        await loginPage.login('standard_user', 'secret_sauce');
         
         // verify that the user is redirected to the inventory page w/succesful login
         const currentURL = await driver.getCurrentUrl();
         expect(currentURL).to.equal('https://www.saucedemo.com/inventory.html');
     });
 
+    // Test#11- attempt login with locked out user and verify behavior
+    it('should attempt login with the correct locked out user and correct password and verify behavior', async () => {
+        
+        await driver.get('https://www.saucedemo.com/');
+        await loginPage.login('locked_out_user','secret_sauce');
+        
+        // verify that the error message is displayed
+        const errorMessage = await driver.findElement(By.css("h3:nth-child(1)")).getText();
+        expect(errorMessage).to.equal('Epic sadface: Sorry, this user has been locked out.');
+    });
+
+    // Test#12- attempt login with the problem user and correct password and verify behavior
+    it('should attempt login with the problem user username and correct password and verify behavior', async () => {
+
+        await driver.get('https://www.saucedemo.com/');
+        await loginPage.login('problem_user', 'secret_sauce');
+        
+        // verify that the user is redirected to the inventory page w/succesful login
+        const currentURL = await driver.getCurrentUrl();
+        expect(currentURL).to.equal('https://www.saucedemo.com/inventory.html');
+    });
+
+    // Test#13- attempt login with the performance glitch user and correct password and verify behavior
+    it('should attempt login with the problem user username and correct password and verify behavior', async function() { //this.timeout gets an error when using arrow function, so it was replaced here
+        this.timeout(10000);
+
+        await driver.get('https://www.saucedemo.com/');
+        await loginPage.login('performance_glitch_user', 'secret_sauce');
+
+        // wait till element with the class="inventory_item_img is loaded and check for an item
+        const inventoryItemShirt = By.css("#item_1_img_link");
+        await driver.wait(until.elementsLocated(inventoryItemShirt), 10000);
+        
+        
+        // verify that the user is redirected to the inventory page w/succesful login
+        const currentURL = await driver.getCurrentUrl();
+        expect(currentURL).to.equal('https://www.saucedemo.com/inventory.html');
+    });
 
 });

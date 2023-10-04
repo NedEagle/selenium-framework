@@ -8,8 +8,12 @@ class LoginPage {
         this.loginButtonLocator = By.css("#login-button");
     }
 
-    async enterCorrectUsername() {
+    async enterStandardUser() {
         await this.driver.findElement(this.usernameTextLocator).sendKeys("standard_user");
+    }
+
+    async enterProblemUser() {
+        await this.driver.findElement(this.usernameTextLocator).sendKeys("problem_user");
     }
 
     async enterIncorrectUsername() {
@@ -26,6 +30,14 @@ class LoginPage {
 
     async clickLogin() {
         await this.driver.findElement(this.loginButtonLocator).click();
+    }
+
+    async enterUsername(username) {
+        await this.driver.findElement(this.usernameTextLocator).sendKeys(username);
+    }
+
+    async enterPassword(password) {
+        await this.driver.findElement(this.passwordTextLocator).sendKeys(password);
     }
 
     async login(username, password) {
