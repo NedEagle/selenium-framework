@@ -32,6 +32,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#2- attempt login with incorrect username and incorrect password and verify behavior
     it('should attempt login with inccorect login and incorrect password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterIncorrectUsername();
         await loginPage.enterIncorrectPassword();
@@ -49,6 +50,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#3- attempt login with incorrect username and no password and verify behavior
     it('should attempt login with incorrect username and no password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterIncorrectUsername();
         await loginPage.clickLogin();
@@ -65,6 +67,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#4- attempt login with incorrect username and correct password and verify behavior
     it('should attempt login with incorrect username and correct password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterIncorrectUsername();
         await loginPage.enterCorrectPassword();
@@ -82,6 +85,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#5- attempt login with no username and incorrect password and verify behavior
     it('should attempt login with no username and incorrect password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterIncorrectPassword();
         await loginPage.clickLogin();
@@ -98,6 +102,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#6- attempt login with no username and no password and verify behavior
     it('should attempt login with no username and no password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.clickLogin();
         
@@ -113,6 +118,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#7- attempt login with no username and correct password and verify behavior
     it('should attempt login with no username and correct password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterCorrectPassword();
         await loginPage.clickLogin();
@@ -129,6 +135,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#8- attempt login with correct username and incorrect password and verify behavior
     it('should attempt login with correct username and incorrect password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterStandardUser(); 
         await loginPage.enterIncorrectPassword();
@@ -146,6 +153,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#9- attempt login with correct username and no password and verify behavior
     it('should attempt login with correct username and no password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.enterStandardUser();
         await loginPage.clickLogin();
@@ -162,6 +170,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#10- attempt login with correct username and password and verify behavior
     it('should attempt login with the first correct username and correct password and verify behavior', async () => {
 
+        // Refresh page and login with inputs
         await driver.navigate().refresh();
         await loginPage.login('standard_user', 'secret_sauce');
         
@@ -173,6 +182,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#11- attempt login with locked out user and verify behavior
     it('should attempt login with the correct locked out user and correct password and verify behavior', async () => {
         
+        // Refresh page and login with inputs
         await driver.get('https://www.saucedemo.com/');
         await loginPage.login('locked_out_user','secret_sauce');
         
@@ -184,6 +194,7 @@ describe('Sample Test on saucedemo.com homepage', () => {
     // Test#12- attempt login with the problem user and correct password and verify behavior
     it('should attempt login with the problem user username and correct password and verify behavior', async () => {
 
+        // Refresh page and login with inputs
         await driver.get('https://www.saucedemo.com/');
         await loginPage.login('problem_user', 'secret_sauce');
         
@@ -194,8 +205,12 @@ describe('Sample Test on saucedemo.com homepage', () => {
 
     // Test#13- attempt login with the performance glitch user and correct password and verify behavior
     it('should attempt login with the problem user username and correct password and verify behavior', async function() { //this.timeout gets an error when using arrow function, so it was replaced here
+        
+        /* Default timeout is 2000ms, test needs more time to run since 
+        this account has a performance glitch */
         this.timeout(10000);
 
+        // Refresh page and login with inputs
         await driver.get('https://www.saucedemo.com/');
         await loginPage.login('performance_glitch_user', 'secret_sauce');
 

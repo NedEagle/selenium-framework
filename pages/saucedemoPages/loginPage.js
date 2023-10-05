@@ -45,6 +45,13 @@ class LoginPage {
         await this.enterPassword(password);
         await this.clickLogin();
     }
+
+    async justLogin() {
+        await this.enterStandardUser();
+        await this.enterCorrectPassword();
+        await this.clickLogin();
+    }
+
 }
 
 module.exports = LoginPage;
