@@ -1,4 +1,3 @@
-
 ```
 selenium-framework
 ├─ package-lock.json
@@ -6,10 +5,13 @@ selenium-framework
 ├─ pages
 │  ├─ otherPages
 │  └─ saucedemoPages
+│     ├─ inventoryPage.js
 │     └─ loginPage.js
+├─ README.md
 └─ test
    ├─ sampleTest.js
    └─ saucedemoTests
-      └─ saucedemoTest.js
+      ├─ inventoryPageTests.js
+      └─ loginPageTests.js
 
 ```
