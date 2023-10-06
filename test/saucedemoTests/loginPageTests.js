@@ -18,7 +18,7 @@ after(() => {
     }
 });
 
-describe('Sample Test on saucedemo.com homepage', () => {
+describe('Sample Test on saucedemo.com login', () => {
     before(async () => {
         await driver.get('https://www.saucedemo.com/');
     });
