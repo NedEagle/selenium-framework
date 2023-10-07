@@ -1,17 +1,17 @@
-# # This code triggers pipeline on daily basis, 7 AM UTC in this case (3AM EST, 12AM PST) 
+# # This code triggers the pipeline on a daily basis, 7 AM UTC in this case (3 AM EST, 12 AM PST) 
 # schedules:
 # - cron: "0 7 * * *"
 #   displayName: Daily build
 
-# This code triggers pipeline on weekly basis, 7 AM UTC on Saturday (3AM EST, 12AM PST)
+# This code triggers the pipeline on a weekly basis, 7 AM UTC on Saturday (3 AM EST, 12 AM PST)
 schedules:
-- cron: "0 7 * * 7"
+- cron: "0 7 * * 6"
   displayName: Weekly build
 
 
 trigger: none
 
-# This code triggers pipeline where changes are pushed to main branch of the Git repository
+# This code triggers a pipeline where changes are pushed to the main branch of the Git repository
 # trigger:
 # - main
 
