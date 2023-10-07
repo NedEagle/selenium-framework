@@ -1,0 +1,30 @@
+# # This code triggers pipeline on daily basis, 7 AM UTC in this case (3AM EST, 12AM PST) 
+# schedules:
+# - cron: "0 7 * * *"
+#   displayName: Daily build
+
+# This code triggers pipeline on weekly basis, 7 AM UTC on Saturday (3AM EST, 12AM PST)
+schedules:
+- cron: "0 7 * * 7"
+  displayName: Weekly build
+
+
+trigger: none
+
+# This code triggers pipeline where changes are pushed to main branch of the Git repository
+# trigger:
+# - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm ci
+    mocha test/saucedemoTests/inventoryPageTests.js
+  displayName: 'Install dependencies and run tests'
