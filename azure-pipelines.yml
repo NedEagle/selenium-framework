@@ -5,15 +5,15 @@
 
 # This code triggers the pipeline on a weekly basis, 7 AM UTC on Saturday (3 AM EST, 12 AM PST)
 schedules:
-- cron: "0 7 * * 6"
-  displayName: Weekly build
+#- cron: "0 7 * * 6"
+#  displayName: Weekly build
 
 
-trigger: none
+# trigger: none
 
 # This code triggers a pipeline where changes are pushed to the main branch of the Git repository
-# trigger:
-# - main
+trigger:
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
