@@ -15,7 +15,7 @@ let inventoryPage;
 
 log4js.configure({
     appenders: {
-        file: { type: 'file', filename: 'project.log' }
+        file: { type: 'file', filename: 'logs/inventoryPageTestsLog.log' }
     },
     categories: {
         default: { appenders: ['file'], level: 'info' }
