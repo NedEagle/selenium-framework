@@ -1,17 +1,5 @@
 <h1 align="center">selenium-framework</h1>
 
-<br>
-<br>
-
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/NedEagle/selenium-framework?color=56BEB8">
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/NedEagle/selenium-framework?color=56BEB8">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/NedEagle/selenium-framework?color=56BEB8">
-</p>
-
-<br>
-<br>
-
 ## Directory Tree ##
 
 ```
